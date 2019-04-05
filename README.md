@@ -15,6 +15,28 @@ The following Volumes can be used:
 
 VNC is published at **5900**.
 
+## Run Scripts
+
+The runDocker.sh and runDocker.ps1 uses run if no container exists and start if it exists. They use the current path to map **./dosbox** and **./verilog** to the container. Furthermore the following is possible:
+
+````bash
+# linux
+runDocker.sh r
+
+# windows
+runDocker.ps1 r
+````
+
+Use docker rm to delete the container and start from scratch
+
+````bash
+runDocker.ps1 t
+````
+
+Is needed if you use Docker-Toolbox (corrects the path)
+
+> Dont forget to share the folder in VirtualBox or the drive in Docker for Windows
+
 ## Further links
 
 To create the image I needed (for my university stuff), I combined the following repos:
