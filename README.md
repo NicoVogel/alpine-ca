@@ -10,14 +10,14 @@ It conditions the following components:
 To access dosbox, VNC is installed as well.
 The following Volumes can be used:
 
-- **/dosbox** : does contain the afd.exe (debugger)
+- **/dosbox/bin** : does contain the afd.exe (debugger)
 - **/verilog** : is empty
 
 VNC is published at **5900**.
 
 ## Run Scripts
 
-The runDocker.sh and runDocker.ps1 uses run if no container exists and start if it exists. They use the current path to map **./dosbox** and **./verilog** to the container. Furthermore the following is possible:
+The runDocker.sh and runDocker.ps1 uses run if no container exists and start if it exists. They use the current path to map **./dosbox** and **./verilog** to the container. Furthermore the the script accepts the first parameter. It simply checks if the defined character is part of the first argument.
 
 ````bash
 # linux
