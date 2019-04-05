@@ -8,13 +8,10 @@
 <menu id="root-menu" label="Openbox 3">
   <!-- This requires the presence of the 'menu' package to work -->
   <item label="Terminal">
-    <action name="Execute"><execute>/usr/bin/xterm</execute></action>
+    <action name="Execute"><command>/usr/bin/xterm</command></action>
   </item>
   <item label="Dosbox">
-    <action name="Execute"><execute>dosbox /dosbox</execute></action>
-  </item>
-  <item label="AFD">
-    <action name="Execute"><execute>dosbox /afd</execute></action>
+    <action name="Execute"><command>dosbox /dosbox</command></action>
   </item>
   <separator />
   <menu id="client-list-menu" />
