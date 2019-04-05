@@ -1,10 +1,10 @@
 FROM birddock/alpine-vnc
 
 ENV FASM_VERSION 1.73.09
-USER root
 
 ADD [ "assets/dosbox-0.74-2.tar.gz", "assets/dosbox-0.74.patch", "/build/" ]
 
+# install dosbox
 RUN apk -U update \
     && apk add --no-cache sdl libxxf86vm libstdc++ libgcc build-base sdl-dev linux-headers file \
     && cd /build \
@@ -14,9 +14,10 @@ RUN apk -U update \
     && make \
     && make install \
     && apk del build-base sdl-dev linux-headers \
-    && rm -R /build 
+    && rm -R /build \
+    && mkdir /dosbox
 
-ADD https://github.com/soothscier/assembly-nasm/raw/master/AFD.EXE /afd/AFD.EXE
+ADD https://github.com/soothscier/assembly-nasm/raw/master/AFD.EXE /dosbox/AFD.EXE
 
 # install fasm
 RUN apk add --no-cache curl \
@@ -24,12 +25,11 @@ RUN apk add --no-cache curl \
     && ln -s /fasm/fasm /bin/fasm \
     && apk add --no-cache iverilog --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     && mkdir /verilog \
-    && chmod 777 /afd/AFD.EXE
+    && mkdir /dosbox/bin \
+    && chmod 777 /dosbox/AFD.EXE
 
 # Openbox window manager update
 COPY assets/menu.xml /etc/xdg/openbox/menu.xml
 
 # Mounting the config and data directory
-VOLUME  ["/dosbox", "/verilog"]
-
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+VOLUME  ["/dosbox/bin", "/verilog"]
