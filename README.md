@@ -1,4 +1,4 @@
-# Info
+# Alpine Computer Architecture
 
 This image can be used to develop ASM code.
 It conditions the following components:
