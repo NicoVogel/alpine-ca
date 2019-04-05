@@ -1,6 +1,4 @@
 FROM birddock/alpine-vnc
-# https://hub.docker.com/r/danielguerra/alpine-vnc
-# https://hub.docker.com/r/tudorh/dosbox
 
 ENV FASM_VERSION 1.73.09
 USER root
@@ -21,7 +19,6 @@ RUN apk -U update \
 
 
 # install fasm
-# https://hub.docker.com/r/guitmz/fasm/dockerfile
 RUN apk add --no-cache curl && \
     curl -sL "https://flatassembler.net/fasm-$FASM_VERSION.tgz" | tar xz && \
     ln -s /fasm/fasm /bin/fasm
